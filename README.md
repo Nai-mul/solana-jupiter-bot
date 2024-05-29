@@ -71,8 +71,8 @@ All trades are stored in trades history and will be shown in the table. Table is
 > Please don't use `npm`, use `yarn` instead.
 
 ```bash
-$ git clone https://github.com/arbprotocol/solana-jupiter-bot && cd solana-jupiter-bot
-$ yarn
+git clone https://github.com/arbprotocol/solana-jupiter-bot && cd solana-jupiter-bot
+yarn -init
 ```
 
 Set your wallet private key in the `.env` file
