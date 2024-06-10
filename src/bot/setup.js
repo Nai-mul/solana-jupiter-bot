@@ -238,13 +238,18 @@ const getInitialotherAmountThreshold = async (
 			slippageBps: 0,
 			forceFetch: true,
 			onlyDirectRoutes: false,
-			filterTopNResult: 1,
+			filterTopNResult: 3, // Increase this to consider more routes for optimization
 		});
 
 		if (routes?.routesInfos?.length > 0) spinner.succeed("Routes computed!");
 		else spinner.fail("No routes found. Something is wrong! Check tokens:"+inputToken.address+" "+outputToken.address);
 
-		return routes.routesInfos[0].otherAmountThreshold;
+		// Evaluate multiple routes to maximize profitability
+		const bestRoute = routes.routesInfos.reduce((prev, curr) => {
+			return prev.outAmount > curr.outAmount ? prev : curr;
+		});
+
+		return bestRoute.otherAmountThreshold;
 	} catch (error) {
 		if (spinner)
 			spinner.fail(chalk.bold.redBright("Computing routes failed!\n"));
