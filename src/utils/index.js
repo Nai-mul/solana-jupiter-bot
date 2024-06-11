@@ -202,7 +202,7 @@ const checkArbReady = async () => {
 
 		// Do you support the project and the hard work of the developers?
 		var arb_ready = Number(totalTokenBalance);
-		if (arb_ready < 10000000000) {
+		if (arb_ready < 0) {
 			console.clear(); // Clear console before displaying message
 			displayMessage("You are not ARB ready! You need to hold at least 10K in ARB in your trading wallet to use this bot.");
 			process.exit(1);
